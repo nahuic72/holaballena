@@ -1,0 +1,40 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hola-ballena
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: hola-ballena-app
+      version: blue
+  template:
+    metadata:
+      name: hola-ballena-pod
+      labels:
+        app: hola-ballena-app
+        version: blue
+    spec:
+      containers:
+      - name: hola-ballena-contenedor
+        image: nahuic/holaballena:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+---
+apiVersion: v1
+kind: Service 
+metadata:
+  name: hola-ballena-svc
+  labels:
+    app: hola-ballena-app
+spec:
+  selector:
+    app: hola-ballena-app
+    version: blue
+  type: NodePort
+  ports:
+  - nodePort: 31113
+    port: 80
+    targetPort: 80
