@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hola-ballena
+  name: hola-ballena-dep
 spec:
   replicas: 5
   selector:
