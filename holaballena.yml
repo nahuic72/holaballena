@@ -7,13 +7,13 @@ spec:
   replicas: 5
   selector:
     matchLabels:
-      app: hola-ballena-app
+      app: ballena-app
       version: blue
   template:
     metadata:
       name: hola-ballena-pod
       labels:
-        app: hola-ballena-app
+        app: ballena-app
         version: blue
     spec:
       containers:
@@ -28,10 +28,10 @@ kind: Service
 metadata:
   name: hola-ballena-svc
   labels:
-    app: hola-ballena-app
+    app: ballena-app
 spec:
   selector:
-    app: hola-ballena-app
+    app: ballena-app
     version: blue
   type: NodePort
   ports:
